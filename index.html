@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="big-cont">
+        
+    </div>
+</body>
+<style>
+    .big-cont{
+        display: flex;
+        flex-wrap: wrap;
+        /* max-width: 300px; */
+    }
+    .sub-cont{
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 5px;
+        padding: 10px;
+        border: 2px solid grey;
+
+        /* background-color: green; */
+    }
+    .entry{
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        font-weight: bold;
+        font-family: "Poppins", sans-serif;
+        margin: 2px;
+        /* border: 1px solid grey; */
+    }
+</style>
+
+<script>
+    console.log("The freaking code ")
+    let start = 1;
+    let stop = 121;
+
+    let arr = []
+    for (let i = start; i < stop; i++) {
+        let currval = i
+        let conti = true    
+        let level = 0;
+        let whole = currval;
+        while (whole != 0) {
+            let _whole = whole
+            whole = Math.floor(whole/2)
+            let rem = _whole%2
+            if (!arr[level]){
+                arr[level] = []
+            }
+            if (rem == 1){
+                arr[level].push(currval)
+            }
+            level++
+        }
+        
+    }
+    console.log(arr)
+    arr.forEach(tb => {
+        str = '<div class="sub-cont">'
+        tb.forEach(el => {
+            str += `
+                <div class="entry">${el}</div>
+            `        
+        });
+        str += "</div>"
+        $(".big-cont").append(str)
+            
+    });
+</script>
+</html>
